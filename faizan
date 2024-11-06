@@ -1,0 +1,25 @@
+export default function json2html(data) {
+  
+    let html = '<table data-user="faizanahmad843321@gmail.com"><thead><tr>';
+
+    
+    const columns = [...new Set(data.flatMap(Object.keys))];
+    
+   
+    columns.forEach(column => {
+        html += `<th>${column}</th>`;
+    });
+    html += '</tr></thead><tbody>';
+
+  
+    data.forEach(row => {
+        html += '<tr>';
+        columns.forEach(column => {
+            html += `<td>${row[column] || ''}</td>`;
+        });
+        html += '</tr>';
+    });
+    html += '</tbody></table>';
+
+    return html;
+}
